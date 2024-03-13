@@ -1,36 +1,39 @@
 let input = document.querySelector("#inputBox");
 let buttons = document.querySelectorAll("button");
 
-let string = "";
+let str = "";
+// for store results
 
 let arr = Array.from(buttons);
+// Array.from() method is used to convert string or set or values into array
 
-arr.forEach(button => {
+arr.forEach((button) => {
+    // this is arrow funtion not callback function
     button.addEventListener("click",(e) => 
     {
-        if(e.target.innerHTML == "=")
+        // addeventlistener because after clicking do the things write in function on every value in array
+        if(e.target.innerText == "=")
         {
-            string = eval(string);
-            input.value = string;
+            str = eval(str);
+            // eval is js inbuilt function which is evaluate all operations
+            input.value = str;
         } 
         
-        else if(e.target.innerHTML == "AC")
+        else if(e.target.innerText == "AC")
         {
-            string = ""; 
-            input.value = string;
+            str = ""; 
+            input.value = str;
         }
 
-        else if(e.target.innerHTML == "DEL")
+        else if(e.target.innerText == "DEL")
         {
-            string = string.substring(0,string.length-1);
-            input.value  = string;
+            str = str.substring(0,str.length-1);
+            // substring is same as slice method
+            input.value  = str;
         }
         else{
-            string += e.target.innerHTML;
-            input.value = string;
+            str += e.target.innerText;
+            input.value = str;
         }
-
-        // string += e.target.innerHTML;
-        // input.value = string;
     })
 })
